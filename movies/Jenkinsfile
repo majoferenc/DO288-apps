@@ -87,7 +87,7 @@ pipeline {
 		sh '''
 			oc project ${DEV_PROJECT}
 			oc new-app --name ${APP_NAME} --as-deployment-config ${APP_NAME}:latest	
-			oc expose svc/${APP_NAME} n ${DEV_PROJECT}
+			oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
 		   '''
             }
         }
@@ -138,7 +138,7 @@ pipeline {
 
 			oc new-app --as-deployment-config --name ${APP_NAME} -i ${APP_NAME}:stage
 
-			oc expose svc/${APP_NAME}
+			oc expose svc/${APP_NAME} -n ${STAGE_PROJECT}
 
 		   '''
             }
